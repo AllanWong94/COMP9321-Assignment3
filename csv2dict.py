@@ -1,6 +1,7 @@
 import csv
 
-
+# The csv file cannot be downloaded, using the kaggle api shows 404 FileNotFound(Manager seems working on this bug currently)
+# Web clawing shows no authentication
 def csv2dict(filename):
     data_collection = []
     # encoding is set to latin-1 according to the encoding of BillboardLyrics dataset
