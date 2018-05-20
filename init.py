@@ -20,5 +20,6 @@ def init():
 
 
 if __name__ == "__main__":
-    rundb.run()
+    # rundb.run()
+    # Can't rundb in init, need to run it before init.py
     init()
