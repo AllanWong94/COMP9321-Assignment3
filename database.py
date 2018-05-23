@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+import re
 
 
 # accept the collection name and a list of data as input parameters
@@ -15,6 +16,7 @@ def db_save(collection, data):
 # return a list of query result
 def db_query(collection, query_info):
     db = db_connect()
+    query_info = db_query_parser(query_info)
     posts = db[collection]
     result_list = posts.find(query_info)
     result_list = list(result_list)
@@ -45,6 +47,11 @@ def db_check(collection):
     for i in r:
         print(i)
 
+# TODO finish the db_query_parser
+# format of input query:
+# x == a "||" | "&&" y != b
+# query must be in string format
+def db_query_parser(query):
 
-if __name__ == "__main__":
-    db_check("billboardlyrics")
+    return query
+
