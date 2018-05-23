@@ -24,5 +24,7 @@ def csv2dict(filename):
 
 
 if __name__ == "__main__":
-    for i in csv2dict("billboard_lyrics_1964-2015.csv"):
-        print(i)
+    data = csv2dict("billboard_lyrics_1964-2015.csv")
+    for i in data:
+        if i["Lyrics"] != "NA":
+            print(i)
