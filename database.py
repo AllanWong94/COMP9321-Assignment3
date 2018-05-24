@@ -16,11 +16,19 @@ def db_save(collection, data):
 # return a list of query result
 def db_query(collection, query_info):
     db = db_connect()
-    query_info = db_query_parser(query_info)
+    # query_info = db_query_parser(query_info)
     posts = db[collection]
     result_list = posts.find(query_info)
     result_list = list(result_list)
 
+    return result_list
+
+
+def db_get(collection):
+    db = db_connect()
+    posts = db[collection]
+    result_list = posts.find()
+    result_list = list(result_list)
     return result_list
 
 
@@ -51,7 +59,36 @@ def db_check(collection):
 # format of input query:
 # x == a "||" | "&&" y != b
 # query must be in string format
-def db_query_parser(query):
-
-    return query
+# def db_query_parser(query):
+#     query = re.sub(r" *(\|\||\&\&|==|!=) *", r" \1 ", query)
+#     para_list = query.split(" ")
+#     op_list = ["==", "!=", "||", "&&"]
+#     stack = []
+#     # TODO no error detection on query string.
+#     token = para_list.pop(0)
+#     while para_list:
+#         para = []
+#         while token not in op_list:
+#             para.append(token)
+#         para_str = " ".join
+#
+#     token = para_list.pop(0)
+#     while para_list:
+#         if token in op_list:
+#             try:
+#                 ident = stack.pop()
+#             except IndexError:
+#                 print("Error query string: empty identifier in operation: ", a)
+#             para = []
+#             token = para_list.pop(0)
+#             while token not in op_list:
+#                 para.append(token)
+#             para_str = " ".join(para)
+#             stack.append([ident, token, para_str])
+#         else:
+#             ident = stack.pop()
+#             ident += a
+#             stack.append(ident)
+#
+#     return query
 
